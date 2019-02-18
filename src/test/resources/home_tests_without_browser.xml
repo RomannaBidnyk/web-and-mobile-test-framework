@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Home Page" thread-count="1" parallel="false">
+
+    <test name="HomePageTest">
+        <classes>
+            <class name="com.cdp.web.HomePageTest"/>
+        </classes>
+    </test>
+</suite>
