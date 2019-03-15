@@ -9,6 +9,5 @@ public enum Browser {
     IE,
     OPERA,
     SAFARI,
-    NO_BROWSER_SELECTED;
-
+    NO_BROWSER_SELECTED
 }

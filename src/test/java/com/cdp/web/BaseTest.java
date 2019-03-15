@@ -5,6 +5,8 @@ import com.cdp.driver.DriverManagerFactory;
 import com.cdp.enums.Browser;
 import com.cdp.pages.HomePage;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
 
 /**
@@ -14,17 +16,18 @@ public class BaseTest {
 
     protected WebDriver driver;
     protected HomePage homePage;
+    private static final Logger LOG = LoggerFactory.getLogger(BaseTest.class);
 
     /*
     * If xml file contains parameter "browser" - use it
     * if no - NO_BROWSER_SELECTED - check if browser is passed from system properties
     * if no - throw exception
-    * */
+    */
 
     @Parameters("browser")
     @BeforeClass
     public void start(@Optional("NO_BROWSER_SELECTED") Browser browser) {
-        if (!browser.equals(Browser.NO_BROWSER_SELECTED)) {
+        if (isBrowserSelected(browser)) {
             driver = DriverManagerFactory.getManager(browser).getDriver();
         } else {
             if (System.getProperty("browser") != null) {
@@ -37,13 +40,18 @@ public class BaseTest {
 
     @BeforeMethod
     public void openHomePage() {
+        LOG.info("Open Home Page");
         driver.get(HomePage.homePageURL);
         homePage = new HomePage(driver);
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown() {
         DriverManager.quitDriver();
+    }
+
+    public boolean isBrowserSelected(Browser browserParam) {
+        return !browserParam.equals(Browser.NO_BROWSER_SELECTED);
     }
 
 }

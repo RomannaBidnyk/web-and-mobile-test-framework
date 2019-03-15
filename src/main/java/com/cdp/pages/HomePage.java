@@ -24,7 +24,6 @@ public class HomePage{
     private WebElement testButton;
 
     public HomePage(WebDriver driver) {
-        super();
         PageFactory.initElements(driver, this);
     }
 
