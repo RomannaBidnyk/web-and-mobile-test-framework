@@ -1,11 +1,13 @@
 package com.cdp.web;
 
-import org.testng.Assert;
+import com.cdp.util.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 /**
  * Created by romanna - 2019.
  */
+@Listeners({TestListener.class})
 public class HomePageTest extends BaseTest {
 
     //pass
