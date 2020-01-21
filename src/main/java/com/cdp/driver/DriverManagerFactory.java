@@ -1,6 +1,7 @@
 package com.cdp.driver;
 
 import com.cdp.enums.Browser;
+import com.cdp.util.AutomationException;
 
 /**
  * Created by romanna - 2019.
@@ -20,7 +21,7 @@ public class DriverManagerFactory {
 //                driverManager = new FirefoxDriverManager();
 //                break;
             default:
-                throw new RuntimeException("There is no properties defined for - " + type.name());
+                throw new AutomationException("There is no properties defined for - " + type.name());
 
         }
         return driverManager;
