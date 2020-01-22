@@ -38,18 +38,10 @@ public class CustomFieldDecorator extends DefaultFieldDecorator {
         Class<?> clazz = field.getType();
 
         if (List.class.isAssignableFrom(clazz)) {
-            if (field.getAnnotation(FindBy.class) == null &&
-                    field.getAnnotation(FindBys.class) == null) {
-                return null;
-            }
+            if (!isFieldAnnotatedWithFindByOrFindBys(field)) return null;
+            if (!isListParameterized(field)) return null;
 
-            Type genericType = field.getGenericType();
-            if (!(genericType instanceof ParameterizedType)) {
-                return null;
-            }
-
-            clazz = (Class<?>) ((ParameterizedType) genericType).
-                    getActualTypeArguments()[0];
+            clazz = getClassForListElements(field);
         }
 
         if (IElement.class.isAssignableFrom(clazz)) {
@@ -57,6 +49,20 @@ public class CustomFieldDecorator extends DefaultFieldDecorator {
         } else {
             return null;
         }
+    }
+
+    private boolean isFieldAnnotatedWithFindByOrFindBys(Field field) {
+        return field.getAnnotation(FindBy.class) == null && field.getAnnotation(FindBys.class) == null;
+    }
+
+    private boolean isListParameterized(Field field) {
+        Type genericType = field.getGenericType();
+        return genericType instanceof ParameterizedType;
+    }
+
+    private Class<?> getClassForListElements(Field field) {
+        Type genericType = field.getGenericType();
+        return (Class<?>) ((ParameterizedType) genericType).getActualTypeArguments()[0];
     }
 
     protected IElement createElement(ClassLoader loader, ElementLocator locator, Class<IElement> clazz) {

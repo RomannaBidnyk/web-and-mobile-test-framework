@@ -13,8 +13,7 @@ public class LocatingCustomElementListHandler implements InvocationHandler {
     private final ElementLocator locator;
     private final Class<IElement> clazz;
 
-    public LocatingCustomElementListHandler(ElementLocator locator,
-                                            Class<IElement> clazz) {
+    public LocatingCustomElementListHandler(ElementLocator locator, Class<IElement> clazz) {
         this.locator = locator;
         this.clazz = clazz;
     }
