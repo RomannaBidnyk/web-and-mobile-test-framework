@@ -42,7 +42,7 @@ public class BaseTest {
     @BeforeMethod
     public void openHomePage() {
         LOG.info("Open Home Page");
-        driver.get(HomePage.homePageURL);
+        driver.get(HomePage.HOME_PAGE_URL);
         homePage = new HomePage(driver);
     }
 

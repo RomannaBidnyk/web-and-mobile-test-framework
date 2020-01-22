@@ -1,30 +1,26 @@
 package com.cdp.pages;
 
+import com.cdp.decorator.Button;
+import com.cdp.decorator.Input;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.Test;
 
 /**
  * Created by romanna - 2019.
  */
-public class HomePage{
+public class HomePage extends Page {
 
-    public static final String homePageURL = "https://www.livelib.ru";
+    public static final String HOME_PAGE_URL = "https://www.livelib.ru";
 
     @FindBy(how = How.ID, using = "find-text")
-    private WebElement searchField;
+    private Input searchField;
 
     @FindBy(how = How.ID, using = "//li/a[@href='/books' and text()='Что почитать']")
-    private WebElement booksButton;
-
-    @FindBy(xpath = "")
-    private WebElement testButton;
+    private Button booksButton;
 
     public HomePage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public void enterDataToSearch(String dataToSearch) {
