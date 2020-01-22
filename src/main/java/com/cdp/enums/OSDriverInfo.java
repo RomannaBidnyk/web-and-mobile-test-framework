@@ -23,7 +23,7 @@ public enum OSDriverInfo {
         public String getPath(Browser browser) {
             String path;
             if (browser == Browser.CHROME) {
-                path = "";
+                path = "src\\main\\resources\\window64\\chromedriver.exe";
             } else {
                 throw new AutomationException("There is no path defined");
             }
@@ -60,7 +60,7 @@ public enum OSDriverInfo {
         public String getPath(Browser browser) {
             String path;
             if (browser == Browser.CHROME) {
-                path = "src/main/resources/chromedriver";
+                path = "src/main/resources/macos/chromedriver";
             } else {
                 throw new AutomationException("There is no path defined");
             }
