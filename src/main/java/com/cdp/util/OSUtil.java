@@ -8,6 +8,10 @@ import org.openqa.selenium.Platform;
  */
 public class OSUtil {
 
+    private OSUtil() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static OSDriverInfo getOS() {
         String osArch = System.getProperty("os.arch");
         Platform currentPlatform = Platform.getCurrent();
