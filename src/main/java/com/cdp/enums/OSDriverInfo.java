@@ -1,6 +1,6 @@
 package com.cdp.enums;
 
-import com.cdp.driver.ChromeDriverManager;
+import com.cdp.util.AutomationException;
 
 /**
  * Created by romanna - 2019.
@@ -13,7 +13,7 @@ public enum OSDriverInfo {
             if (browser == Browser.CHROME) {
                 path = "";
             } else {
-                throw new RuntimeException("There is no path defined");
+                throw new AutomationException("There is no path defined");
             }
             return path;
         }
@@ -25,7 +25,7 @@ public enum OSDriverInfo {
             if (browser == Browser.CHROME) {
                 path = "";
             } else {
-                throw new RuntimeException("There is no path defined");
+                throw new AutomationException("There is no path defined");
             }
             return path;
         }
@@ -37,7 +37,7 @@ public enum OSDriverInfo {
             if (browser == Browser.CHROME) {
                 path = "";
             } else {
-                throw new RuntimeException("There is no path defined");
+                throw new AutomationException("There is no path defined");
             }
             return path;
         }
@@ -50,7 +50,7 @@ public enum OSDriverInfo {
             if (browser == Browser.CHROME) {
                 path = "";
             } else {
-                throw new RuntimeException("There is no path defined");
+                throw new AutomationException("There is no path defined");
             }
             return path;
         }
@@ -62,7 +62,7 @@ public enum OSDriverInfo {
             if (browser == Browser.CHROME) {
                 path = "src/main/resources/chromedriver";
             } else {
-                throw new RuntimeException("There is no path defined");
+                throw new AutomationException("There is no path defined");
             }
             return path;
         }
@@ -78,8 +78,7 @@ public enum OSDriverInfo {
                 driverName = "webdriver.chrome.driver";
                 break;
             default:
-                throw new RuntimeException("There is no driver name defined");
-
+                throw new AutomationException("There is no driver name defined");
         }
         return driverName;
     }

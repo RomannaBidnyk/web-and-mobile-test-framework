@@ -8,7 +8,7 @@ import org.openqa.selenium.Platform;
  */
 public class OSUtil {
 
-    public static OSDriverInfo getOS(){
+    public static OSDriverInfo getOS() {
         String osArch = System.getProperty("os.arch");
         Platform currentPlatform = Platform.getCurrent();
         if (currentPlatform.family() == Platform.WINDOWS) {
@@ -26,7 +26,7 @@ public class OSUtil {
         } else if (currentPlatform == Platform.MAC) {
             return OSDriverInfo.MACOS;
         } else {
-            throw new RuntimeException("Unable to define operating system");
+            throw new AutomationException("Unable to define operating system");
         }
     }
 }

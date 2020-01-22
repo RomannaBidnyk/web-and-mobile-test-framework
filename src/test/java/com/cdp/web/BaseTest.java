@@ -4,6 +4,7 @@ import com.cdp.driver.DriverManager;
 import com.cdp.driver.DriverManagerFactory;
 import com.cdp.enums.Browser;
 import com.cdp.pages.HomePage;
+import com.cdp.util.AutomationException;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,10 +20,10 @@ public class BaseTest {
     private static final Logger LOG = LoggerFactory.getLogger(BaseTest.class);
 
     /*
-    * If xml file contains parameter "browser" - use it
-    * if no - NO_BROWSER_SELECTED - check if browser is passed from system properties
-    * if no - throw exception
-    */
+     * If xml file contains parameter "browser" - use it
+     * if no - NO_BROWSER_SELECTED - check if browser is passed from system properties
+     * if no - throw exception
+     */
 
     @Parameters("browser")
     @BeforeClass
@@ -33,7 +34,7 @@ public class BaseTest {
             if (System.getProperty("browser") != null) {
                 driver = DriverManagerFactory.getManager(Browser.valueOf(System.getProperty("browser"))).getDriver();
             } else {
-                throw new RuntimeException("Browser is not specified");
+                throw new AutomationException("Browser is not specified");
             }
         }
     }

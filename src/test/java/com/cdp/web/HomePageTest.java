@@ -1,6 +1,5 @@
 package com.cdp.web;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
